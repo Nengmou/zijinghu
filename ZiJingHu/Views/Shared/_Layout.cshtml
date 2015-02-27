@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <title>紫荆湖科技 - @ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a href="/"><img src="~/images/logo1.png" class="logo" /></a>
+
+                @*@Html.ActionLink("紫荆湖科技", "Index", "Home", null, new { @class = "navbar-brand" })*@
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("首页", "Index", "Home")</li>
+                    <li>@Html.ActionLink("关于我们", "About", "Home")</li>
+                    <li>@Html.ActionLink("解决方案及产品", "Index", "Product")</li>
+                    @*<li class="dropdown">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">解决方案及产品<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                            </ul>
+                        </li>*@
+                    <li>@Html.ActionLink("服务支持", "Index", "Business")</li>
+                    <li>@Html.ActionLink("项目案例", "Index", "Client")</li>
+                    <li>@Html.ActionLink("联系我们", "Contact", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+
+    @if (@ViewBag.Title == "首页")
+    {
+        @Html.Partial("_ImageSlides")
+    }
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <span class="glyphicon glyphicon-phone-alt glyphicon-print"></span>&nbsp;国内(+086)139-85672920&nbsp;&nbsp;国际(+001)850-5913459&nbsp;
+            <span class="glyphicon glyphicon-envelope"></span>&nbsp;info@zijinghu.com<br />
+            <div class="glyphicon">&copy;</div>@DateTime.Now.Year-紫荆湖科技有限公司版权所有&nbsp;@*粤ICP备19056482号*@
+        </footer>
+    </div>
+
+    @*@Scripts.Render("~/bundles/jquery")*@
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @RenderSection("scripts", required: false)
+
+    @if (this.Session["IsLogin"] != null && (bool)this.Session["IsLogin"])
+    {
+        //cleditor
+        <link rel="stylesheet" type="text/css" href="~/CLEditor/jquery.cleditor.css" />
+        <script type="text/javascript" src="~/CLEditor/jquery.cleditor.min.js"></script>
+        //jquery UI
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    }
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            /*
+            //display categories
+            $.getJSON('/Helper/GetCategories', null, function (data) {
+                $.each(data, function (index, item) {
+                    $(".dropdown-menu").append('<li><a href=/Product/Index#' + item.Value + '>' + item.DisplayName + '</a></li>');
+                });
+            });*/
+
+            if ($("#includedContent") != null) $("#includedContent").load("background.html");
+
+            //WYSIWYG: what you see is what you get
+            $(".cleditor-textarea").cleditor();
+
+            //date picker
+            $('.datepicker').datepicker();
+        });
+    </script>
+
+</body>
+</html>

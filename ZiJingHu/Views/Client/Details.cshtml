@@ -1,0 +1,36 @@
+﻿@model ZiJingHu.Models.Client
+
+@{
+    ViewBag.Title = "项目案例";
+    ViewBag.ClientImagePath = "/Images/Clients/" + Model.ImageName;
+    ViewBag.ProductImagePath = "/Images/Products/" + Model.Product.ImageName;
+}
+
+<div class="row extra-margin">
+    <div class="col-md-2">
+        <img src='@ViewBag.ClientImagePath' class="image-full-grid" />
+    </div>
+    <div class="col-md-10">
+        <h3>@Model.Name</h3>
+        <p>
+            @Model.HeadQuarter <br/>
+            @Model.Description
+        </p>
+
+        <div class="row extra-margin">
+            <div class="col-md-4">
+                <h4>@Html.DisplayNameFor(m => m.ProductId)</h4>
+                <img src='@ViewBag.ProductImagePath' class="image-full-grid" />
+                <p>@Model.Product.Name</p>
+            </div>
+            <div class="col-md-2">
+            </div>
+        </div>
+
+        <h4>@Html.DisplayNameFor(model => model.Feedback)</h4>
+        <p>@Html.Raw(Model.Feedback)</p>
+    </div>
+</div>
+
+
+@Html.Partial("_EditOrBack", Model)

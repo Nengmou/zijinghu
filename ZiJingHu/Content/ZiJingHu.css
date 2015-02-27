@@ -1,0 +1,42 @@
+﻿body {
+    padding-top: 0px;
+    font-family: "Microsoft YaHei UI", "Microsoft YaHei", "Arial", "Verdana", "Tahoma";
+    font-weight: 500;
+    background-color: #ffffff !important;
+}
+
+.navbar {
+    margin-bottom: 0px;
+}
+
+ul.nav li.dropdown:hover > ul.dropdown-menu {
+    display: block;
+}
+
+.logo
+{
+     /*background: url(../Images/logo.jpg) top left;
+     display: block;
+     width: 200px;*/ 
+     max-height: 30px;
+     margin: 10px;
+     /*text-indent: -9999px;*/ /* hides the link text */
+}
+
+.navbar {
+    border-radius: 0px;
+}
+
+.navbar-inverse {
+    background: rgba(0,0,0,0.6);
+}
+
+.image-full-grid {
+    width:100%;
+}
+
+.extra-margin {
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+

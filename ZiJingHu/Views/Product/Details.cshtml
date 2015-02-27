@@ -1,0 +1,40 @@
+﻿@model ZiJingHu.Models.Product
+
+@{
+    ViewBag.Title = "项目案例";
+    ViewBag.ImagePath = "/Images/Products/" + Model.ImageName;
+}
+
+<div class="row extra-margin">
+    <div class="col-md-4">
+        <img src='@ViewBag.ImagePath' class="image-full-grid" />
+    </div>
+    <div class="col-md-8">
+        <h3>@Model.Name</h3>
+        <p>
+            @Html.Raw(Model.Description)  
+        </p>
+    </div>
+</div>
+
+<h4>@Html.DisplayNameFor(model => model.Detail)</h4>
+<p>@Html.Raw(Model.Detail)</p>
+
+<div class="row extra-margin">
+    @if (Model.Clients.Count > 0)
+    {
+        <div class="col-md-12">
+            <h4>最新客户</h4>
+        </div>
+        foreach (var item in Model.Clients)
+        {
+            var path = "/Images/Clients/" + item.ImageName;
+            <div class="col-md-2 text-center">
+                <img src='@path' class="image-full-grid" />
+                <p>@item.Name</p>
+            </div>
+        }
+    }
+</div>
+
+@Html.Partial("_EditOrBack", Model)

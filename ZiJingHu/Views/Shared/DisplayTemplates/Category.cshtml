@@ -1,0 +1,7 @@
+﻿@using ZiJingHu.Models
+@using ZiJingHu.Helpers
+@{
+    var name = EnumHelper.GetDisplayName(typeof(Category), ((Category)Model).ToString());
+}
+
+@name

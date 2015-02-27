@@ -1,0 +1,7 @@
+﻿@if (this.Session["IsLogin"] != null && (bool)this.Session["IsLogin"])
+{
+    <p>
+        @Html.ActionLink("新建", "Create", null, new { @class = "glyphicon glyphicon-new-window", @title = "新建" })
+    </p>
+}
+

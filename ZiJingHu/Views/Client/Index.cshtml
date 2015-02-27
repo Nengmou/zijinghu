@@ -1,0 +1,32 @@
+﻿@model PagedList.IPagedList<ZiJingHu.Models.Client>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "项目案例";
+}
+
+@foreach (var item in Model)
+{
+    var imagePath = "/Images/Clients/" + item.ImageName;
+    <div class="row extra-margin">
+        <div class="col-md-2">
+            <img src='@imagePath' class="image-full-grid" />
+        </div>
+        <div class="col-md-10">
+            <h4>@item.Name</h4>
+            <p>
+                @item.HeadQuarter <br />
+                @item.Product.Name <br />
+                @item.Description <br/>
+                @Html.Partial("_Action", item)
+            </p>
+        </div>
+    </div>
+}
+
+@if (Model.PageCount > 1)
+{
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }), PagedListRenderOptions.Classic)
+}
+@Html.Partial("_CreateNew")

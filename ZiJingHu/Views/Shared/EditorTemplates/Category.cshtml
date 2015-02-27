@@ -1,0 +1,7 @@
+﻿@using ZiJingHu.Models
+@using ZiJingHu.Helpers
+@{
+    var items = EnumHelper.GetItems(typeof(Category), (int?)Model);
+}
+
+@Html.DropDownList("", items)

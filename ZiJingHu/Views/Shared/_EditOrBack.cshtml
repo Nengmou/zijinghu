@@ -1,0 +1,7 @@
+﻿<p>    
+    @Html.ActionLink("<< 返回", "Index")
+    @if (this.Session["IsLogin"] != null && (bool)this.Session["IsLogin"])
+    {
+        <span> | </span>@Html.ActionLink(" ", "Edit", new { id = Model.Id }, new { @class = "glyphicon glyphicon-edit", @title="编辑" }) 
+    }
+</p>
